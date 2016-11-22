@@ -11,21 +11,20 @@ System.register(['@angular/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var template, LoginComponent;
+    var LoginComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            template = require('./login.component.html');
             LoginComponent = (function () {
                 function LoginComponent() {
                 }
                 LoginComponent = __decorate([
                     core_1.Component({
                         selector: 'login-page',
-                        templateUrl: template
+                        template: "<div class=\"login-box\">\n                <div class=\"login-logo\">\n                    <a href=\"#\"><b>Admin</b>LTE</a>\n                </div>\n                <div class=\"login-box-body login\">\n                    <h2>Login</h2>\n            \n                    <form action=\"#\" method=\"post\">\n                        <div class=\"form-group has-feedback\">\n                            <input type=\"email\" class=\"form-control\" placeholder=\"Email\">\n                            <span class=\"glyphicon glyphicon-envelope form-control-feedback\"></span>\n                        </div>\n                        <div class=\"form-group has-feedback\">\n                            <input type=\"password\" class=\"form-control\" placeholder=\"Password\">\n                            <span class=\"glyphicon glyphicon-lock form-control-feedback\"></span>\n                        </div>\n                        <div class=\"row\">\n                            <div class=\"col-xs-8\">\n                               <a routerLink=\"/dashboard\" routerLinkActive=\"active\">I forgot my password</a>\n                                <!--<a href=\"#\">I forgot my password</a>-->\n                            </div><!-- /.col -->\n                            <div class=\"col-xs-4\">\n                                <input class=\"btn btn-primary btn-block btn-flat\" type=\"submit\" value=\"Sign In\">\n                            </div><!-- /.col -->\n                         </div>\n                    </form>\n               \n                </div>\n            </div>"
                     }), 
                     __metadata('design:paramtypes', [])
                 ], LoginComponent);
@@ -36,7 +35,7 @@ System.register(['@angular/core'], function(exports_1, context_1) {
     }
 });
 
-System.register(['@angular/core', '@angular/router', './login/login.component'], function(exports_1, context_1) {
+System.register(['@angular/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -48,7 +47,44 @@ System.register(['@angular/core', '@angular/router', './login/login.component'],
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, login_component_1;
+    var core_1;
+    var DashboardComponent;
+    return {
+        setters:[
+            function (core_1_1) {
+                core_1 = core_1_1;
+            }],
+        execute: function() {
+            DashboardComponent = (function () {
+                function DashboardComponent() {
+                }
+                DashboardComponent = __decorate([
+                    core_1.Component({
+                        selector: 'dashboard-page',
+                        template: "<h1>Dashboard</h1>"
+                    }), 
+                    __metadata('design:paramtypes', [])
+                ], DashboardComponent);
+                return DashboardComponent;
+            }());
+            exports_1("DashboardComponent", DashboardComponent);
+        }
+    }
+});
+
+System.register(['@angular/core', '@angular/router', './login/login.component', './dashboard/dashboard.component'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
+    var core_1, router_1, login_component_1, dashboard_component_1;
     var AppRoutingModule;
     return {
         setters:[
@@ -60,6 +96,9 @@ System.register(['@angular/core', '@angular/router', './login/login.component'],
             },
             function (login_component_1_1) {
                 login_component_1 = login_component_1_1;
+            },
+            function (dashboard_component_1_1) {
+                dashboard_component_1 = dashboard_component_1_1;
             }],
         execute: function() {
             AppRoutingModule = (function () {
@@ -69,8 +108,8 @@ System.register(['@angular/core', '@angular/router', './login/login.component'],
                     core_1.NgModule({
                         imports: [
                             router_1.RouterModule.forRoot([
-                                { path: '/', redirectTo: '/login', pathMatch: 'full' },
-                                { path: 'login', component: login_component_1.LoginComponent },
+                                { path: '', component: login_component_1.LoginComponent },
+                                { path: 'dashboard', component: dashboard_component_1.DashboardComponent },
                                 // otherwise redirect to home
                                 { path: '**', redirectTo: '/' }
                             ])
@@ -114,7 +153,7 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'pbn-app',
-                        template: "<h1>Login</h1><div class=\"outer-outlet\">\n      <router-outlet></router-outlet>\n    </div>"
+                        template: "<div class=\"outer-outlet\">\n                  <router-outlet></router-outlet>\n              </div>"
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
@@ -126,7 +165,7 @@ System.register(['@angular/core'], function(exports_1, context_1) {
 });
 
 ///<reference path="../../../typings/index.d.ts"/>
-System.register(['@angular/core', '@angular/platform-browser', '@angular/http', '@angular/forms', './app-routing.module', './app.component'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', '@angular/http', './app-routing.module', './app.component', './login/login.component', './dashboard/dashboard.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -138,7 +177,7 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/http', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, http_1, forms_1, app_routing_module_1, app_component_1;
+    var core_1, platform_browser_1, forms_1, http_1, app_routing_module_1, app_component_1, login_component_1, dashboard_component_1;
     var AppModule;
     return {
         setters:[
@@ -148,27 +187,41 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/http', 
             function (platform_browser_1_1) {
                 platform_browser_1 = platform_browser_1_1;
             },
-            function (http_1_1) {
-                http_1 = http_1_1;
-            },
             function (forms_1_1) {
                 forms_1 = forms_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
             },
             function (app_routing_module_1_1) {
                 app_routing_module_1 = app_routing_module_1_1;
             },
             function (app_component_1_1) {
                 app_component_1 = app_component_1_1;
+            },
+            function (login_component_1_1) {
+                login_component_1 = login_component_1_1;
+            },
+            function (dashboard_component_1_1) {
+                dashboard_component_1 = dashboard_component_1_1;
             }],
         execute: function() {
-            //import { routing } from './app.routing';
             AppModule = (function () {
                 function AppModule() {
                 }
                 AppModule = __decorate([
                     core_1.NgModule({
-                        imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, app_routing_module_1.AppRoutingModule],
-                        declarations: [app_component_1.AppComponent],
+                        imports: [
+                            platform_browser_1.BrowserModule,
+                            forms_1.FormsModule,
+                            http_1.HttpModule,
+                            app_routing_module_1.AppRoutingModule
+                        ],
+                        declarations: [
+                            app_component_1.AppComponent,
+                            login_component_1.LoginComponent,
+                            dashboard_component_1.DashboardComponent,
+                        ],
                         bootstrap: [app_component_1.AppComponent]
                     }), 
                     __metadata('design:paramtypes', [])
@@ -176,30 +229,6 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/http', 
                 return AppModule;
             }());
             exports_1("AppModule", AppModule);
-        }
-    }
-});
-
-System.register(['@angular/router', './login/login.component'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    var router_1, login_component_1;
-    var appRoutes, routing;
-    return {
-        setters:[
-            function (router_1_1) {
-                router_1 = router_1_1;
-            },
-            function (login_component_1_1) {
-                login_component_1 = login_component_1_1;
-            }],
-        execute: function() {
-            appRoutes = [
-                { path: '/', component: login_component_1.LoginComponent },
-                // otherwise redirect to home
-                { path: '**', redirectTo: '' }
-            ];
-            exports_1("routing", routing = router_1.RouterModule.forRoot(appRoutes));
         }
     }
 });
