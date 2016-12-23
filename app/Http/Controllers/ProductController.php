@@ -38,7 +38,7 @@ class ProductController extends Controller
 		if($products) {
 			return $this->response->respondOk($products);
 		}
-		return $this->response->errorInternalError('Unable to get the products');
+		return $this->response->errorInternal('Unable to get the products');
 	}
 
 	/**
@@ -76,7 +76,7 @@ class ProductController extends Controller
 		if ($product) {
 			return $this->response->respondCreated($product);
 		}
-		return $this->response->errorInternalError('Unable to create the product');
+		return $this->response->errorInternal('Unable to create the product');
 	}
 
 	/**
@@ -92,9 +92,9 @@ class ProductController extends Controller
 			return $this->response->errorNotFound('Product not found');
 		}
 		if( !$product->delete() ) {
-			return $this->response->errorInternalError('Unable to delete the product');
+			return $this->response->errorInternal('Unable to delete the product');
 		}
-		return $this->response->respondDeleted('[]');
+		return $this->response->respondNoContent('[]');
 	}
 
 	/**
@@ -122,7 +122,7 @@ class ProductController extends Controller
 		if ($product) {
 			return $this->response->respondOk($product);
 		}
-		return $this->response->errorInternalError('Unable to update the product');
+		return $this->response->errorInternal('Unable to update the product');
 	}
 
 

@@ -77,7 +77,7 @@ class Handler extends ExceptionHandler
 		}
 		if ($e instanceof FatalErrorException) {
 			$message = ($e->getMessage() == '') ? 'Internal Error' : $e->getMessage();
-			return $this->errorInternalError($message);
+			return $this->errorInternal($message);
 		}
 		if ($e instanceof ConflictHttpException) {
 			$message = ($e->getMessage() == '') ? 'Request unprocessable due to a conflict' : $e->getMessage();
@@ -198,7 +198,7 @@ class Handler extends ExceptionHandler
 	 * @param string $message
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 */
-	public function errorInternalError($message)
+	public function errorInternal($message)
 	{
 		return $this->setStatusCode(500)->respondWithError($message);
 	}

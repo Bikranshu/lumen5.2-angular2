@@ -83,6 +83,8 @@ class CResponse
 	}
 
 	/**
+     * Respond with an accepted response.
+     *
 	 * @param string $data
 	 * @return mixed
 	 */
@@ -92,10 +94,12 @@ class CResponse
 	}
 
 	/**
+     * Respond with a no content response.
+     *
 	 * @param string $data
 	 * @return mixed
 	 */
-	public function respondDeleted($data)
+	public function respondNoContent($data)
 	{
 		return $this->setStatusCode(Response::HTTP_NO_CONTENT)->respondWithSuccess($data);
 	}
@@ -167,7 +171,7 @@ class CResponse
 	 * @param string $message
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 */
-	public function errorInternalError($message)
+	public function errorInternal($message)
 	{
 		return $this->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR)->respondWithError($message);
 	}
